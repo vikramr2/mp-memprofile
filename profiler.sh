@@ -8,7 +8,7 @@ while kill -0 $pid 2> /dev/null; do
     readarray -t children < <(pgrep -P $pid)
     if [ "${#children[*]}" -gt 0 ]; then
         for child in ${children[*]}; do
-            echo $child
+            python3 helpers/get_pid_data.py $child
         done
     fi
     echo "---"
