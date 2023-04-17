@@ -1,9 +1,6 @@
 import psutil
-import sys
 
-timestamp = int(sys.argv[1])
-
-def get_mem_info(pid: int): # -> dict[str, int]:
+def get_mem_info(pid: int, timestamp: int, parent: bool = False):
     rss = 0
     pss = 0
     uss = 0
@@ -24,9 +21,8 @@ def get_mem_info(pid: int): # -> dict[str, int]:
     shared = round(shared/1024**2, 3)
     shared_file = round(shared_file/1024**2, 3)
 
+    if parent:
+        pid = "parent"
+
     out = f'{pid},{timestamp},{rss},{pss},{uss},{shared},{shared_file}'
     print(out)
-
-pids = [int(arg) for arg in sys.argv[2:]]
-for pid in pids:
-    get_mem_info(pid)
