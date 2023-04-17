@@ -9,7 +9,7 @@ def task():
 
 def main():
     procs = [mp.Process(target=task) for _ in range(10)]
-    sleep(10)
+    sleep(3)
     for p in procs:
         p.start()
     for p in procs:

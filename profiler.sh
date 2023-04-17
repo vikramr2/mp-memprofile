@@ -1,5 +1,8 @@
 #!/bin/bash 
-$@ > out.txt &
+timestamp=$(date +%s)
+echo "pid,rss,pss,uss,shared,shared_file" > profile_$timestamp.csv
+
+$@ &
 pid=$(pgrep -P $$)
 
 trap "kill $pid 2> /dev/null" EXIT
@@ -7,10 +10,7 @@ trap "kill $pid 2> /dev/null" EXIT
 while kill -0 $pid 2> /dev/null; do
     readarray -t children < <(pgrep -P $pid)
     if [ "${#children[*]}" -gt 0 ]; then
-        for child in ${children[*]}; do
-            python3 helpers/get_pid_data.py $child
-        done
+        python3 helpers/get_pid_data.py ${children[*]} >> profile_$timestamp.csv
     fi
-    echo "---"
     sleep 1
 done
