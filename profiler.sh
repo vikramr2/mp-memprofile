@@ -4,7 +4,10 @@ DIR="$(cd "$(dirname "$0")" && pwd)"
 sample_rate=1 # modify this to sample at different rates
 
 timestamp=$(date +%s)
-echo "pid,time,rss,pss,uss,shared,shared_file" > profile_$timestamp.csv
+
+outfile="profile_$timestamp"
+
+echo "pid,time,rss,pss,uss,shared,shared_file" > $outfile.csv
 
 $@ &
 pid=$(pgrep -P $$)
