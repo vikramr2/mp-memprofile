@@ -23,3 +23,13 @@ To change sampling rate and profile csv name from the default, change the `sampl
   - _Default_: 1
 - `outfile=filename`: Data will be outputted to `filename.csv`
   - _Default_: profile_*timestamp*.csv
+## Data Format
+Data is in a tabular csv format with the following columns
+- `pid`: _int_ value of pid if the process is a child process, otherwise its a _string_ value: "parent".
+- `time`: _int_ value containing the Unix timestamp of data collection.
+- `rss`: _float_ value of the Resident Set Size in MB. This includes shared memory.
+- `pss`: _float_ value of the Proportional Set Size in MB. Let $n$ be the number of processes.
+$$PSS=USS+Shared/n$$
+- `uss`: _float_ value of the Unique Set Size in MB. This is the memory unique to each process.
+- `shared`: _float_ value of shared memory, in MB, between processes
+- `shared_file`: _float_ value of shared external filesystem memory in MB.
