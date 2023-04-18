@@ -22,4 +22,4 @@ To change sampling rate and profile csv name from the default, change the `sampl
 - `sample_rate=n`: Data is collected every `n` seconds
   - _Default_: 1
 - `outfile=filename`: Data will be outputted to `filename.csv`
-  - _Default_: profile_ _timestamp_.csv
+  - _Default_: profile_*timestamp*.csv
