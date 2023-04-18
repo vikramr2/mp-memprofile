@@ -17,3 +17,9 @@ To redirect the python script to a file output and possibly run it in the backgr
 ```
 ./profiler.sh python script.py <args> > out.txt &
 ```
+## Modifying Fuctionality
+To change sampling rate and profile csv name from the default, change the `sample_rate` and `outfile` variables in `profiler.sh`.
+- `sample_rate=n`: Data is collected every `n` seconds
+  - _Default_: 1
+- `outfile=filename`: Data will be outputted to `filename.csv`
+  - _Default_: profile__timestamp_.csv
