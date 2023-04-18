@@ -30,6 +30,7 @@ Data is in a tabular csv format with the following columns
 - `rss`: _float_ value of the Resident Set Size in MB. This includes shared memory.
 - `pss`: _float_ value of the Proportional Set Size in MB. Let $n$ be the number of processes.
 $$PSS=USS+Shared/n$$
+  - To get total memory usage across process, sum their PSSs up
 - `uss`: _float_ value of the Unique Set Size in MB. This is the memory unique to each process.
 - `shared`: _float_ value of shared memory, in MB, between processes
 - `shared_file`: _float_ value of shared external filesystem memory in MB.
