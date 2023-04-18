@@ -1,2 +1,2 @@
 __pycache__/
-profile_*
+profile_[0-9]*
